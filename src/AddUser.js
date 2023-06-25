@@ -129,7 +129,16 @@ const LoginForm = ({ open, handleClose }) => {
        })
 
        const data  = await res.json();
-       console.log(data);
+
+       if(res.status !== 201){
+           console.log(data);
+           if(data.code === 11000){
+             setError('Mobile no. already exist')
+           }else{
+               setError(data.error);
+           }
+            return;
+       }
         close();
     };
 

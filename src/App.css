@@ -197,12 +197,7 @@ tbody td.active {
 }
 
 .error{
-  /* padding: 10px !important;
-  border-radius: 0 !important;
-  position: relative; 
-  display: inline-block !important;
-  box-shadow: 1px 1px 1px #aaaaaa;
-  margin-top: 10px; */
-  color: red;
-  font-weight: 600;
+  margin-top: 12px;
+  color: rgb(245, 161, 161);
+  font-weight: 400;
 }

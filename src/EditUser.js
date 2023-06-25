@@ -114,8 +114,8 @@ const EditForm = ({ open, setOpen, id }) => {
         e.preventDefault();
         if (!handlePhoneNumberChange(number)) return;
 
-            console.log(name,email,number)
-        const res = await fetch(`/users/${id}`,{
+            // console.log(name,email,number)
+        const res = await fetch(`/editUser/${id}`,{
             method: 'PUT',
             headers:{
                 "Content-Type" : "application/json"
@@ -124,9 +124,17 @@ const EditForm = ({ open, setOpen, id }) => {
                 name,email,number
             })
            })
-    
            const data  = await res.json();
-           console.log(data);
+           
+           if(res.status === 400){
+            // console.log('d----------', data);
+               if(data.indexOf('email_1') !== -1){
+                setError('Email already exist');
+               }else if(data.indexOf('number_1') !== -1){
+                setError('Mobile No. already exist');
+               }
+               return;
+           }
         handleClose();
     };
 
